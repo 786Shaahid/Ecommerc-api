@@ -1,0 +1,40 @@
+{
+    "swagger":"2.0",
+    "inf":{
+        "version":"1.0.0",
+        "description":"API for Ecommerce APP",
+        "title":"E-commerce API"
+    },
+    "host":"localhost:3000",
+    "path":{
+        "/api/users/login":{
+            "post":{
+                "summary":"Login",
+                "description":"User login to get token",
+                 "parameters":[{
+                    "in":"body",
+                    "name":"body ",
+                    "description":"User Credentials",
+                    "schema":{
+                        "type":"object",
+                        "properties":{
+                            "email":{
+                                "type":"string"
+                            },
+                            "password":{
+                                "type":"string"
+                            }
+                        }
+                    }}
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK"
+                    },
+                    "400":{
+                        "description":"Invaild Credentail !"}
+                }
+            }
+        }
+    }
+}
