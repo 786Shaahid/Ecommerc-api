@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 const jwtAuth=(req,res,next)=>{
     // 1.read the token
       const token=req.headers['authorization'];
-      console.log(token);
+      // console.log(token);
       // 2. if no token return err
       if(!token){
          return res.status(401).send('Unauthorized user')
@@ -13,6 +13,7 @@ const jwtAuth=(req,res,next)=>{
      try {
         const payload=jwt.verify(token,"xekSACHmbLxiiY1k5IKALU76btpBvaXV");
         req.userID=payload.userID;
+      //   console.log(payload);
      } catch (error) {
         // return error 
         console.log(error);

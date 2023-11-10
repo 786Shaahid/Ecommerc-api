@@ -1,79 +1,79 @@
 import UserModels from "../users/user.models.js";
 
 class ProductModel{
-       constructor(id,name,description,price,image,cateogory,size){
-        this.id=id,
+       constructor(id,name,description,price,image,stock,category,size){
+        this._id=id,
         this.name=name,
         this.description=description,
         this.price=price,
         this.image=image,
-        this.cateogory=cateogory,
+        this.stock=stock,
+        this.category=category,
         this.size=size
        }
-    static getProducts(){
-          return products;
-    }
-    static get(id){
-        const product=products.find(i=> i.id==id);
-        return product;
-    }
-    static addProductDetails(product){
-         const productID= products.length+1;
-          product.id=productID;
-          products.push(product);
-          return product;
-    }
-   static filter(minPrice,maxPrice,category){
-      //  console.log(false||false||undefined);
-    const filtered=  products.filter((product)=>{
-        return(
-          ( !minPrice ||product.price>=minPrice) &&
-           (!maxPrice || product.price<=maxPrice) &&
-           (!category || product.cateogory==category)
+    // static getProducts(){
+    //       return products;
+    // }
+    // static get(id){
+    //     const product=products.find(i=> i.id==id);
+    //     return product;
+    // }
+    // static addProductDetails(product){
+    //      const productID= products.length+1;
+    //       product.id=productID;
+    //       products.push(product);
+    //       return product;
+    // }
+  //  static filter(minPrice,maxPrice,category){
+  //     //  console.log(false||false||undefined);
+  //   const filtered=  products.filter((product)=>{
+  //       return(
+  //         ( !minPrice ||product.price>=minPrice) &&
+  //          (!maxPrice || product.price<=maxPrice) &&
+  //          (!category || product.cateogory==category)
           
-          )
-    });
-         return filtered;
-   }
+  //         )
+  //   });
+  //        return filtered;
+  //  }
 
-   static rating(userID,productID,rating){
-    // 1. validates the users
-     const user=   UserModels.getAll().find((r)=> r.userID=userID);
-     if(!user){
-      return "User not found !"
-     }
-
+  //  static rating(userID,productID,rating){
+  //   // 1. validates the users
+  //    const user=   UserModels.getAll().find((r)=> r.userID=userID);
+  //    if(!user){
+  //     return "User not found !"
+  //    }
      // validate products 
-     const product= products.find((i)=>i.id=productID);
-     console.log(product);
-     if(!product){
-      return "Product not found !"
-     }
+    //  const product= products.find((i)=>i.id=productID);
+    //  console.log(product);
+    //  if(!product){
+    //   return "Product not found !"
+    //  }
 // 2. check if there is any ratings and if not then add rating array
 
-      if(!product.rating){
-        product.ratings=[];
-        product.ratings.push({
-          userID:userID,
-          rating:rating
-        })
-      }else{
-        // check if user rating is alredy available
-        const exitsRatingIndex=product.rating.findIndex((r)=> r.userID=userID);
-        if(exitsRatingIndex>=0){
-          product.ratings[exitsRatingIndex]={
-            userID:userID,
-            rating:rating
-           };
-        }else{
-          product.ratings.push({
-              userID:userID,
-              rating:rating
-            })         
+  //     if(!product.rating){
+  //       product.ratings=[];
+  //       product.ratings.push({
+  //         userID:userID,
+  //         rating:rating
+  //       })
+  //     }else{
+  //       // check if user rating is alredy available
+  //       const exitsRatingIndex=product.rating.findIndex((r)=> r.userID=userID);
+  //       if(exitsRatingIndex>=0){
+  //         product.ratings[exitsRatingIndex]={
+  //           userID:userID,
+  //           rating:rating
+  //          };
+  //       }else{
+  //         product.ratings.push({
+  //             userID:userID,
+  //             rating:rating
+  //           })         
         
-        }
-      }
-   }
+  //       }
+  //     }
+  //  }
 
 }
 
